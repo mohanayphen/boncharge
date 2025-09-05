@@ -64,48 +64,48 @@ export default function ProductCard({ product, onQuickAdd, onLearnMore }: Produc
         )}
 
         {/* Image */}
-        <div className="relative aspect-square overflow-hidden bg-gray-50">
+        <div className="relative h-48 overflow-hidden bg-gray-50">
           <Image
             src={imageError ? placeholderImage : product.image}
             alt={product.title}
             fill
             className={cn(
               "object-cover transition-transform duration-300",
-              isHovered && "scale-110"
+              isHovered && "scale-105"
             )}
             placeholder="blur"
             blurDataURL={generateBlurDataURL()}
             onError={() => setImageError(true)}
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           />
         </div>
 
         {/* Content */}
-        <div className="p-4 space-y-3">
+        <div className="p-3 space-y-2">
           {/* Title & Subtitle */}
           <div>
-            <h3 className="font-semibold text-gray-900 line-clamp-1">
+            <h3 className="font-medium text-gray-900 text-sm line-clamp-1">
               {product.title}
             </h3>
             {product.subtitle && (
-              <p className="text-sm text-gray-500">{product.subtitle}</p>
+              <p className="text-xs text-gray-500">{product.subtitle}</p>
             )}
           </div>
 
           {/* Short Benefit */}
-          <p className="text-sm text-gray-600 line-clamp-2">
+          <p className="text-xs text-gray-600 line-clamp-2">
             {product.shortBenefit}
           </p>
 
           {/* Rating */}
           {product.rating && product.reviewsCount && (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
               <div className="flex items-center">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star
                     key={i}
                     className={cn(
-                      "w-4 h-4",
+                      "w-3 h-3",
                       i < Math.floor(product.rating!) 
                         ? "fill-amber-400 text-amber-400"
                         : "fill-gray-200 text-gray-200"
@@ -113,7 +113,7 @@ export default function ProductCard({ product, onQuickAdd, onLearnMore }: Produc
                   />
                 ))}
               </div>
-              <span className="text-sm text-gray-500">
+              <span className="text-xs text-gray-500">
                 {product.rating} ({product.reviewsCount})
               </span>
             </div>
@@ -121,34 +121,34 @@ export default function ProductCard({ product, onQuickAdd, onLearnMore }: Produc
 
           {/* Price */}
           <div className="flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-gray-900">
+            <span className="text-lg font-bold text-gray-900">
               {formatPrice(product.price)}
             </span>
             {product.compareAtPrice && (
-              <span className="text-sm text-gray-500 line-through">
+              <span className="text-xs text-gray-500 line-through">
                 {formatPrice(product.compareAtPrice)}
               </span>
             )}
           </div>
 
           {/* Actions */}
-          <div className="flex gap-2 pt-2">
+          <div className="flex gap-2 pt-1">
             <Button
               onClick={() => onQuickAdd(product)}
-              className="flex-1 bg-teal-600 hover:bg-teal-700 text-white"
+              className="flex-1 bg-teal-600 hover:bg-teal-700 text-white h-8 text-sm"
               data-cta={`add-to-cart-${product.id}`}
             >
-              <ShoppingCart className="w-4 h-4 mr-2" />
+              <ShoppingCart className="w-3 h-3 mr-1" />
               Add to Cart
             </Button>
             <Button
               onClick={() => onLearnMore(product)}
               variant="outline"
               size="icon"
-              className="border-gray-300 hover:border-teal-300"
+              className="border-gray-300 hover:border-teal-300 h-8 w-8"
               aria-label={`Learn more about ${product.title}`}
             >
-              <Info className="w-4 h-4" />
+              <Info className="w-3 h-3" />
             </Button>
           </div>
         </div>

@@ -22,7 +22,7 @@ export const bundles: Bundle[] = [
     price: 199,
     compareAtPrice: 276,
     savingsLabel: "Save 28%",
-    image: "/images/sleep-bundle.svg",
+    image: "/images/1.png",
     tags: ["Sleep", "Bestseller", "Gift"],
     featured: true
   },
@@ -34,7 +34,7 @@ export const bundles: Bundle[] = [
     price: 149,
     compareAtPrice: 207,
     savingsLabel: "Save 28%",
-    image: "/images/new-mom-bundle.svg",
+    image: "/images/2.png",
     tags: ["Sleep", "Recovery", "For Her", "Gift"]
   },
   {
@@ -45,7 +45,7 @@ export const bundles: Bundle[] = [
     price: 1199,
     compareAtPrice: 1576,
     savingsLabel: "Save 24%",
-    image: "/images/biohacker-bundle.svg",
+    image: "/images/3.png",
     tags: ["Recovery", "Performance", "For Him", "Premium"],
     featured: true
   },
@@ -57,7 +57,7 @@ export const bundles: Bundle[] = [
     price: 189,
     compareAtPrice: 256,
     savingsLabel: "Save 26%",
-    image: "/images/wfh-bundle.svg",
+    image: "/images/4.png",
     tags: ["Productivity", "Wellness", "For Him", "For Her"]
   },
   {
@@ -68,7 +68,7 @@ export const bundles: Bundle[] = [
     price: 1499,
     compareAtPrice: 2097,
     savingsLabel: "Save 29%",
-    image: "/images/recovery-pro-bundle.svg",
+    image: "/images/5.png",
     tags: ["Recovery", "Performance", "Premium", "For Him"],
     featured: true
   },
@@ -80,7 +80,7 @@ export const bundles: Bundle[] = [
     price: 299,
     compareAtPrice: 397,
     savingsLabel: "Save 25%",
-    image: "/images/emf-bundle.svg",
+    image: "/images/6.png",
     tags: ["EMF", "Protection", "Family", "For Kids"]
   },
   {
@@ -91,7 +91,7 @@ export const bundles: Bundle[] = [
     price: 749,
     compareAtPrice: 997,
     savingsLabel: "Save 25%",
-    image: "/images/beauty-bundle.svg",
+    image: "/images/7.png",
     tags: ["Beauty", "Recovery", "For Her", "Premium"]
   },
   {
@@ -102,7 +102,7 @@ export const bundles: Bundle[] = [
     price: 219,
     compareAtPrice: 297,
     savingsLabel: "Save 26%",
-    image: "/images/travel-bundle.svg",
+    image: "/images/8.png",
     tags: ["Travel", "Portable", "Sleep", "Gift"]
   }
 ];

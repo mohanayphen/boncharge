@@ -47,21 +47,21 @@ export default function Hero({ onShopClick, onBundlesClick }: HeroProps) {
 
   return (
     <section className="relative min-h-screen h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated Gradient Background */}
+      {/* Animated Medium-Dark Gradient Background */}
       <div 
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(135deg, #f8fafc 0%, #e6fffa 25%, #fef3c7 50%, #f0fdfa 75%, #fef3c7 100%)',
+          background: 'linear-gradient(135deg, #334155 0%, #475569 25%, #64748b 50%, #475569 75%, #334155 100%)',
           backgroundSize: '400% 400%',
           animation: 'gradientShift 15s ease infinite',
         }}
       />
       
-      {/* Additional gradient overlay */}
+      {/* Additional gradient overlay for depth */}
       <div 
         className="absolute inset-0"
         style={{
-          background: 'radial-gradient(ellipse at top right, rgba(147, 197, 253, 0.15), transparent 50%), radial-gradient(ellipse at bottom left, rgba(167, 243, 208, 0.15), transparent 50%)',
+          background: 'radial-gradient(ellipse at top right, rgba(20, 184, 166, 0.25), transparent 50%), radial-gradient(ellipse at bottom left, rgba(59, 130, 246, 0.25), transparent 50%)',
         }}
       />
       
@@ -69,7 +69,7 @@ export default function Hero({ onShopClick, onBundlesClick }: HeroProps) {
       <div 
         className="absolute inset-0 opacity-30"
         style={{
-          backgroundImage: 'linear-gradient(to right, #80808012 1px, transparent 1px), linear-gradient(to bottom, #80808012 1px, transparent 1px)',
+          backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.08) 1px, transparent 1px)',
           backgroundSize: '14px 24px',
         }}
       />
@@ -239,7 +239,7 @@ export default function Hero({ onShopClick, onBundlesClick }: HeroProps) {
         {/* Limited Time Badge */}
         <motion.div
           variants={itemVariants}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-amber-50 border border-amber-200 rounded-full text-sm font-medium text-amber-800 mb-8"
+          className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/20 border border-amber-500/50 rounded-full text-sm font-medium text-amber-300 mb-8 backdrop-blur-sm"
           whileHover={shouldReduceMotion ? {} : { scale: 1.05 }}
           whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
         >
@@ -255,18 +255,18 @@ export default function Hero({ onShopClick, onBundlesClick }: HeroProps) {
         {/* Headline */}
         <motion.h1
           variants={itemVariants}
-          className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6"
+          className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
         >
           Science-Backed Gifts for
           <motion.span 
-            className="block text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600 mt-2"
+            className="block text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-400 mt-2"
             animate={shouldReduceMotion ? {} : {
               backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
             }}
             transition={{ duration: 5, repeat: Infinity, ease: 'linear' }}
             style={{ 
               backgroundSize: '200% 200%',
-              backgroundImage: 'linear-gradient(to right, #0d9488, #2563eb, #0d9488)'
+              backgroundImage: 'linear-gradient(to right, #2dd4bf, #60a5fa, #2dd4bf)'
             }}
           >
             Better Sleep & Recovery
@@ -276,7 +276,7 @@ export default function Hero({ onShopClick, onBundlesClick }: HeroProps) {
         {/* Subheadline */}
         <motion.p
           variants={itemVariants}
-          className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-10"
+          className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-10"
         >
           Transform your wellness routine with cutting-edge technology designed to optimize sleep, 
           accelerate recovery, and protect against modern environmental stressors.
@@ -294,7 +294,7 @@ export default function Hero({ onShopClick, onBundlesClick }: HeroProps) {
             <Button
               size="lg"
               onClick={onShopClick}
-              className="group bg-gradient-to-r from-teal-600 to-blue-600 hover:from-teal-700 hover:to-blue-700 text-white px-8 py-6 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200"
+              className="group bg-gradient-to-r from-teal-500 to-blue-500 hover:from-teal-400 hover:to-blue-400 text-white px-8 py-6 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200"
               data-cta="hero-shop-guide"
             >
               Shop Gift Guide
@@ -316,12 +316,12 @@ export default function Hero({ onShopClick, onBundlesClick }: HeroProps) {
               size="lg"
               variant="outline"
               onClick={onBundlesClick}
-              className="group border-2 border-gray-300 hover:border-gray-400 bg-white/80 backdrop-blur-sm px-8 py-6 text-lg font-semibold rounded-xl shadow-md hover:shadow-lg transition-all duration-200"
+              className="group border-2 border-white/30 hover:border-white/50 bg-white/10 backdrop-blur-sm px-8 py-6 text-lg font-semibold rounded-xl shadow-md hover:shadow-lg transition-all duration-200 text-white hover:bg-white/20"
               data-cta="hero-view-bundles"
             >
               View Bundles
               <motion.span 
-                className="ml-2 text-teal-600"
+                className="ml-2 text-teal-400"
                 animate={shouldReduceMotion ? {} : { scale: [1, 1.1, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
@@ -334,7 +334,7 @@ export default function Hero({ onShopClick, onBundlesClick }: HeroProps) {
         {/* Trust Indicators */}
         <motion.div
           variants={itemVariants}
-          className="mt-12 flex flex-wrap justify-center gap-8 text-sm text-gray-500"
+          className="mt-12 flex flex-wrap justify-center gap-8 text-sm text-gray-400"
           initial="hidden"
           animate="visible"
           transition={{ staggerChildren: 0.1 }}
@@ -345,7 +345,7 @@ export default function Hero({ onShopClick, onBundlesClick }: HeroProps) {
             whileHover={shouldReduceMotion ? {} : { y: -2 }}
           >
             <motion.svg 
-              className="w-5 h-5 text-green-500" 
+              className="w-5 h-5 text-green-400" 
               fill="currentColor" 
               viewBox="0 0 20 20"
               animate={shouldReduceMotion ? {} : { scale: [1, 1.2, 1] }}
@@ -361,7 +361,7 @@ export default function Hero({ onShopClick, onBundlesClick }: HeroProps) {
             whileHover={shouldReduceMotion ? {} : { y: -2 }}
           >
             <motion.svg 
-              className="w-5 h-5 text-green-500" 
+              className="w-5 h-5 text-green-400" 
               fill="currentColor" 
               viewBox="0 0 20 20"
               animate={shouldReduceMotion ? {} : { scale: [1, 1.2, 1] }}
@@ -377,7 +377,7 @@ export default function Hero({ onShopClick, onBundlesClick }: HeroProps) {
             whileHover={shouldReduceMotion ? {} : { y: -2 }}
           >
             <motion.svg 
-              className="w-5 h-5 text-green-500" 
+              className="w-5 h-5 text-green-400" 
               fill="currentColor" 
               viewBox="0 0 20 20"
               animate={shouldReduceMotion ? {} : { scale: [1, 1.2, 1] }}
@@ -396,7 +396,7 @@ export default function Hero({ onShopClick, onBundlesClick }: HeroProps) {
         animate={shouldReduceMotion ? {} : { y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
       </motion.div>

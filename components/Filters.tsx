@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
-import { X, Filter } from 'lucide-react';
+import { X, Filter, SlidersHorizontal, Tag, Users, DollarSign, ArrowUpDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export interface FilterOptions {
@@ -71,7 +71,113 @@ export default function Filters({ activeFilters, onFilterChange, onReset, produc
     activeFilters.priceRange[1] < 1000;
 
   return (
-    <div className="space-y-4">
+    <div className="bg-gray-50 border-b border-gray-200">
+      {/* Desktop Horizontal Filters */}
+      <div className="hidden lg:block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div className="flex items-center gap-4">
+          {/* Sort & Count */}
+          <div className="flex items-center gap-3 pr-4 border-r border-gray-300">
+            <Select value={activeFilters.sort} onValueChange={setSort}>
+              <SelectTrigger className="w-[140px] h-9 bg-white border-gray-300 text-sm">
+                <SelectValue placeholder="Featured" />
+              </SelectTrigger>
+              <SelectContent>
+                {SORT_OPTIONS.map(option => (
+                  <SelectItem key={option.value} value={option.value}>
+                    {option.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <span className="text-sm text-gray-500 whitespace-nowrap">{productCount} products</span>
+          </div>
+
+          {/* All Filters in Compact Groups */}
+          <div className="flex items-center gap-6 flex-1">
+            {/* Categories Group */}
+            <div className="flex items-center gap-2">
+              <span className="text-xs uppercase tracking-wider text-gray-500 font-semibold">Category</span>
+              <div className="flex gap-1">
+                {CATEGORIES.map(category => (
+                  <button
+                    key={category}
+                    onClick={() => toggleCategory(category)}
+                    className={cn(
+                      "px-2.5 py-1 text-xs font-medium rounded-md transition-all duration-200",
+                      activeFilters.categories.includes(category)
+                        ? "bg-teal-600 text-white shadow-sm"
+                        : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
+                    )}
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div className="w-px h-8 bg-gray-300"></div>
+
+            {/* Shop For Group */}
+            <div className="flex items-center gap-2">
+              <span className="text-xs uppercase tracking-wider text-gray-500 font-semibold">For</span>
+              <div className="flex gap-1">
+                {PERSONAS.map(persona => (
+                  <button
+                    key={persona}
+                    onClick={() => togglePersona(persona)}
+                    className={cn(
+                      "px-2.5 py-1 text-xs font-medium rounded-md transition-all duration-200",
+                      activeFilters.personas.includes(persona)
+                        ? "bg-purple-600 text-white shadow-sm"
+                        : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
+                    )}
+                  >
+                    {persona.replace('For ', '')}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div className="w-px h-8 bg-gray-300"></div>
+
+            {/* Price Group */}
+            <div className="flex items-center gap-2">
+              <span className="text-xs uppercase tracking-wider text-gray-500 font-semibold">Price</span>
+              <Select 
+                value={`${activeFilters.priceRange[0]}-${activeFilters.priceRange[1]}`}
+                onValueChange={(value) => {
+                  const range = PRICE_RANGES.find(r => `${r.value[0]}-${r.value[1]}` === value);
+                  if (range) setPriceRange(range.value as [number, number]);
+                }}
+              >
+                <SelectTrigger className="w-[110px] h-9 bg-white border-gray-300 text-sm">
+                  <SelectValue placeholder="All" />
+                </SelectTrigger>
+                <SelectContent>
+                  {PRICE_RANGES.map(range => (
+                    <SelectItem key={range.label} value={`${range.value[0]}-${range.value[1]}`}>
+                      {range.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+
+          {/* Clear All */}
+          {hasActiveFilters && (
+            <button
+              onClick={onReset}
+              className="px-3 py-1.5 text-xs font-medium text-red-600 bg-red-50 rounded-md hover:bg-red-100 transition-colors"
+            >
+              Clear all
+            </button>
+          )}
+        </div>
+      </div>
+
       {/* Mobile Filter Toggle */}
       <div className="lg:hidden">
         <Button
@@ -84,10 +190,10 @@ export default function Filters({ activeFilters, onFilterChange, onReset, produc
         </Button>
       </div>
 
-      {/* Filter Controls */}
+      {/* Mobile Filter Controls */}
       <div className={cn(
-        "space-y-6",
-        "lg:block",
+        "space-y-6 mt-4",
+        "lg:hidden",
         showMobileFilters ? "block" : "hidden"
       )}>
         {/* Sort */}

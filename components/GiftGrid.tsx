@@ -126,62 +126,62 @@ export default function GiftGrid({ products: initialProducts }: GiftGridProps) {
   };
 
   return (
-    <section id="gift-guide" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-          Gift Guide
-        </h2>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          Discover science-backed wellness gifts perfect for everyone on your list
-        </p>
+    <section id="gift-guide" className="py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            Gift Guide
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Discover science-backed wellness gifts perfect for everyone on your list
+          </p>
+        </div>
       </div>
 
-      <div className="lg:grid lg:grid-cols-4 lg:gap-8">
-        {/* Filters Sidebar */}
-        <div className="lg:col-span-1 mb-8 lg:mb-0">
-          <Filters
-            activeFilters={filters}
-            onFilterChange={setFilters}
-            onReset={handleReset}
-            productCount={filteredProducts.length}
-          />
-        </div>
+      {/* Horizontal Filters - Full Width */}
+      <div className="mb-8">
+        <Filters
+          activeFilters={filters}
+          onFilterChange={setFilters}
+          onReset={handleReset}
+          productCount={filteredProducts.length}
+        />
+      </div>
 
-        {/* Product Grid */}
-        <div className="lg:col-span-3">
-          {filteredProducts.length > 0 ? (
-            <motion.div 
-              layout
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-            >
-              <AnimatePresence mode="popLayout">
-                {filteredProducts.map((product, index) => (
-                  <motion.div
-                    key={product.id}
-                    layout
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    transition={{ duration: 0.3, delay: index * 0.05 }}
-                  >
-                    <ProductCard
-                      product={product}
-                      onQuickAdd={handleQuickAdd}
-                      onLearnMore={handleLearnMore}
-                    />
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-            </motion.div>
-          ) : (
-            <div className="text-center py-12">
-              <p className="text-gray-500 mb-4">No products match your filters</p>
-              <Button onClick={handleReset} variant="outline">
-                Clear Filters
-              </Button>
-            </div>
-          )}
-        </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Product Grid - 4 columns */}
+        {filteredProducts.length > 0 ? (
+          <motion.div 
+            layout
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          >
+            <AnimatePresence mode="popLayout">
+              {filteredProducts.map((product, index) => (
+                <motion.div
+                  key={product.id}
+                  layout
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3, delay: index * 0.05 }}
+                >
+                  <ProductCard
+                    product={product}
+                    onQuickAdd={handleQuickAdd}
+                    onLearnMore={handleLearnMore}
+                  />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+        ) : (
+          <div className="text-center py-12">
+            <p className="text-gray-500 mb-4">No products match your filters</p>
+            <Button onClick={handleReset} variant="outline">
+              Clear Filters
+            </Button>
+          </div>
+        )}
       </div>
 
       {/* Product Detail Modal */}
